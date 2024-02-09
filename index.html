@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notifications</title>
+</head>
+<body>
+    <button onclick="requestNotificationPermission()">Enable Push Notifications</button>
+    <script>
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                console.log('Service Worker registered:', registration);
+            }).catch(function(error) {
+                console.error('Service Worker registration failed:', error);
+            });
+        } else {
+            console.error('Push notifications are not supported in this browser.');
+        }
+    </script>
+</body>
+</html>
